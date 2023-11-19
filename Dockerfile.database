@@ -1,8 +1,5 @@
-# Utilisez l'image officielle MongoDB
 FROM mongo:latest
 
-# Définissez le port sur lequel MongoDB écoutera (par défaut : 27017)
 EXPOSE 27017
 
-# Commande à exécuter lors du démarrage du conteneur
 CMD ["mongod"]

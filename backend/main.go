@@ -19,17 +19,15 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Création du handler
 	userHandler := handler.NewUserHandler(client)
 
-	// Configuration du router
 	r := mux.NewRouter()
 	r.HandleFunc("/user", userHandler.CreateUser).Methods("POST")
 	r.HandleFunc("/user/{id}", userHandler.GetUser).Methods("GET")
 	r.HandleFunc("/user/{id}", userHandler.UpdateUser).Methods("PUT")
 	r.HandleFunc("/user", optionsHandler).Methods("OPTIONS")
 	r.HandleFunc("/user/{id}", optionsHandler).Methods("OPTIONS")
-	// Démarrage du serveur
+
 	log.Println("Le serveur écoute sur le port :3000")
 	log.Fatal(http.ListenAndServe(":3000", r))
 }

@@ -12,7 +12,6 @@ import (
 	"net/http"
 )
 
-// UserHandler struct contient le client MongoDB.
 type UserHandler struct {
 	collection *mongo.Collection
 }
@@ -23,7 +22,6 @@ func enableCors(w *http.ResponseWriter) {
 	(*w).Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
 }
 
-// NewUserHandler crée une instance de UserHandler.
 func NewUserHandler(client *mongo.Client) *UserHandler {
 	collection := client.Database("my-database-mongodb").Collection("users")
 	return &UserHandler{collection}
@@ -93,7 +91,5 @@ func (h *UserHandler) UpdateUser(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-
-	// Renvoyer l'utilisateur mis à jour
 	json.NewEncoder(w).Encode(updatedUser)
 }

@@ -5,7 +5,6 @@ import (
 )
 
 func main() {
-	// Dossier contenant votre frontend
 	fs := http.FileServer(http.Dir("./static"))
 
 	http.Handle("/", fs)
