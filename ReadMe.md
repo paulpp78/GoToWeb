@@ -61,6 +61,34 @@ If you are not using Docker for local development, follow these additional steps
     - Frontend: [http://localhost:80](http://localhost:80)
     - Backend: [http://localhost:3000](http://localhost:3000)
 
+## Docker start 
+
+1. Clone 
+   ```shell
+    git clone https://github.com/yourusername/GoToWeb.git
+    cd GoToWeb
+    ```
+2. Build images
+   ```shell
+   docker build -t backend-container -f Dockerfile.backend .
+   docker build -t frontend-container -f Dockerfile.frontend .
+   docker build -t mongodb-container -f Dockerfile.database .
+   ```
+3. Create Network
+   ```shell
+   docker network create gotoweb-network
+   ```
+4. Run Images
+   ```shell
+   docker run -d -p 3000:3000 --name backend --network gotoweb-network backend-container
+   docker run -d -p 80:80 --name frontend --network gotoweb-network frontend-container
+   docker run -d --name mongodb --network gotoweb-network mongodb-container
+   ```
+5. Access the web app:
+
+   - Frontend: [http://localhost:80](http://localhost:80)
+   - Backend: [http://localhost:3000](http://localhost:3000)
+
 ## Directory Structure
 
 - `backend`: Contains the backend Go code.
