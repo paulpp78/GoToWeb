@@ -36,7 +36,7 @@ If you are not using Docker for local development, follow these additional steps
 1. Clone the repository:
 
     ```shell
-    git clone https://github.com/yourusername/GoToWeb.git
+    git clone https://github.com/paulpp78/GoToWeb.git
     cd GoToWeb
     ```
 
@@ -65,7 +65,7 @@ If you are not using Docker for local development, follow these additional steps
 
 1. Clone 
    ```shell
-    git clone https://github.com/yourusername/GoToWeb.git
+    git clone https://github.com/paulpp78/GoToWeb.git
     cd GoToWeb
     ```
 2. Build images
