@@ -14,6 +14,25 @@ Before you begin, ensure you have met the following requirements:
 
 To get started with GoToWeb, follow these steps:
 
+### Prerequisites for Local Development without docker
+
+If you are not using Docker for local development, follow these additional steps:
+
+1. Modify the MongoDB connection URI in the backend code:
+
+   In `backend/main.go`, change the following line from:
+
+   ```go
+   clientOptions := options.Client().ApplyURI("mongodb://mongodb:27017")
+   ```
+   to:
+   ```go
+   clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
+   ```
+   This change allows your backend to connect to a MongoDB instance running on your local machine.
+
+## Getting Started
+
 1. Clone the repository:
 
     ```shell
