@@ -1,0 +1,15 @@
+FROM golang:1.20-alpine
+
+WORKDIR /app
+
+COPY go.mod .
+COPY go.sum .
+COPY backend/ ./backend/
+
+RUN go mod download
+
+RUN go build -o main ./backend/.
+
+EXPOSE 3000
+
+CMD [".main"]
