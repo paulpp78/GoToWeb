@@ -1,0 +1,32 @@
+name: Deploy to ssh Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: SSH Remote Commands
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd /home/adminp/Documents/GoToWeb
+            git pull git@github.com:paulpp78/GoToWeb.git main
+            docker build -t backend-container -f Dockerfile.backend .
+            docker build -t frontend-container -f Dockerfile.frontend .
+            docker build -t mongodb-container -f Dockerfile.database .
+            docker network create gotoweb-network
+            docker run -d -p 3000:3000 --name backend --network gotoweb-network backend-container
+            docker run -d -p 80:80 --name frontend --network gotoweb-network frontend-container
+            docker run -d -p 27017:27017 --name mongodb --network gotoweb-network go-mongodb-container
