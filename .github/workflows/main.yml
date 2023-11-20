@@ -19,7 +19,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PASSWORD }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /home/adminp/Documents/GoToWeb
             git pull git@github.com:paulpp78/GoToWeb.git main
