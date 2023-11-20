@@ -26,6 +26,6 @@ jobs:
             docker build -t backend-container -f Dockerfile.backend .
             docker build -t frontend-container -f Dockerfile.frontend .
             docker build -t mongodb-container -f Dockerfile.database .
-            docker restart backend-container
-            docker restart frontend-container
-            docker restart mongodb-container
+            docker restart mongodb
+            docker restart frontend
+            docker restart backend
