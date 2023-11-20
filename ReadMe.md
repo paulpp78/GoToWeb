@@ -82,7 +82,7 @@ If you are not using Docker for local development, follow these additional steps
    ```shell
    docker run -d -p 3000:3000 --name backend --network gotoweb-network backend-container
    docker run -d -p 80:80 --name frontend --network gotoweb-network frontend-container
-   docker run -d --name mongodb --network gotoweb-network mongodb-container
+   docker run -d -p 27017:27017 --name mongodb --network gotoweb-network go-mongodb-container
    ```
 5. Access the web app:
 
