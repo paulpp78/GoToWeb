@@ -1,6 +1,6 @@
 # GoToWeb
 
-An application for discovering GoLand and DevOps with Docker and Kubernetes.
+An application for discovering GoLang and DevOps with Docker and Kubernetes.
 
 ## Prerequisites
 
